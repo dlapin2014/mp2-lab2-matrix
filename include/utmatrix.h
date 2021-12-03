@@ -62,7 +62,7 @@ public:
 template <class ValType>
 TVector<ValType>::TVector(int s, int si)
 {
-    if(s > MAX_VECTOR_SIZE) throw invalid_argument("too large vector");
+    if(s > MAX_VECTOR_SIZE || si > MAX_VECTOR_SIZE) throw invalid_argument("too large vector");
     if(s < 0) throw invalid_argument("vector with negative length");
     if(si<0) throw invalid_argument("vector with negative start index");
     
@@ -158,8 +158,7 @@ template <class ValType> // вычесть скаляр
 TVector<ValType> TVector<ValType>::operator-(const ValType &val)
 {
     TVector temp(Size, StartIndex);
-    for (int i = 0; i < Size; i++)
-        temp.pVector[i] = pVector[i] - val;
+    temp = *this + (-val);
 
     return temp;
 } /*-------------------------------------------------------------------------*/
