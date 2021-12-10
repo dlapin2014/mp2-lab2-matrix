@@ -176,7 +176,7 @@ TVector<ValType> TVector<ValType>::operator*(const ValType &val)
 template <class ValType> // сложение
 TVector<ValType> TVector<ValType>::operator+(const TVector<ValType> &v)
 {
-    if (Size!=v.Size) throw invalid_argument("cant_add_vectors_with_not_equal_size");
+    if (StartIndex != v.StartIndex || Size!=v.Size) throw invalid_argument("cant_add_vectors_with_not_equal_size");
     TVector temp(Size, StartIndex);
     for (int i = 0; i < Size; i++)
         temp.pVector[i] = pVector[i] + v.pVector[i];
@@ -187,7 +187,7 @@ TVector<ValType> TVector<ValType>::operator+(const TVector<ValType> &v)
 template <class ValType> // вычитание
 TVector<ValType> TVector<ValType>::operator-(const TVector<ValType> &v)
 {
-    if (Size != v.Size) throw invalid_argument("cant_substract_vectors_with_not_equal_size");
+    if (StartIndex != v.StartIndex || Size != v.Size) throw invalid_argument("cant_substract_vectors_with_not_equal_size");
     TVector temp(Size, StartIndex);
     for (int i = 0; i < Size; i++)
         temp.pVector[i] = pVector[i] - v.pVector[i];
@@ -198,7 +198,7 @@ TVector<ValType> TVector<ValType>::operator-(const TVector<ValType> &v)
 template <class ValType> // скалярное произведение
 ValType TVector<ValType>::operator*(const TVector<ValType> &v)
 {
-    if (Size != v.Size) throw invalid_argument("cant_multiply_vectors_with_not_equal_size");
+    if (StartIndex!=v.StartIndex || Size!=v.Size) throw invalid_argument("cant_multiply_vectors_with_not_equal_size");
     ValType s = 0;
     for (int i = 0; i < Size; i++)
         s+=pVector[i] * v.pVector[i];

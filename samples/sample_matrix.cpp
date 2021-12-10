@@ -14,7 +14,6 @@ void main()
     setlocale(LC_ALL, "Russian");
 
 
-
   cout << "¬ведите размеры матриц a и b ";
   int a_size, b_size;
   cin >> a_size >> b_size;
