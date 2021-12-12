@@ -13,8 +13,16 @@ void main()
 {
     setlocale(LC_ALL, "Russian");
 
+    TVector <int> a(1, 2); // a = 001
+    a[2] = 1;
 
-  cout << "¬ведите размеры матриц a и b ";
+    TVector <int> b(2, 1); // b = 022
+    b[1] = 2;
+    b[2] = 2;
+
+    cout << a - b;
+
+  /*cout << "¬ведите размеры матриц a и b ";
   int a_size, b_size;
   cin >> a_size >> b_size;
   TMatrix<int> a(a_size), b(b_size);
@@ -31,6 +39,6 @@ void main()
 
       cout << "Matrix a + b = " << endl << a + b << endl;
       cout << "Matrix a - b = " << endl << a - b << endl;
-  }
+  }*/
 }
 //---------------------------------------------------------------------------
